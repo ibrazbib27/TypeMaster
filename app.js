@@ -1,35 +1,21 @@
-    var sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
-$(document).ready(function () {
-
    
-    $("#keyboard-upper-container").hide();
-    var totalhtml;
-    var startTime;
-    var endTime;
-    var t = 0;
-var i;
-var key;
-var numMistakes = 0;
-var n = 0;
-var m = 0;
-var space = 0;
- $("#yellow-block").remove();
-
-    var feedback = "";
+$(document).ready(function () {
+$("#yellow-block").remove();
+$("#keyboard-upper-container").hide();
+let startTime, endTime, t = 0, i, key, numMistakes = 0, n = 0, m = 0, space = 0, feedback = "", sent = "";
+let sentences = ['ten ate neite ate nee enet ite ate inet ent eate', 'Too ato too nOt enot one totA not anot tOO aNot', 'oat itain oat tain nate eate tea anne inant nean', 'itant eate anot eat nato inate eat anot tain eat', 'nee ene ate ite tent tiet ent ine ene ete ene ate'];
     
 $("#sentence").html('<mark>'+(sentences[m]).substr(n,n+1)+'</mark>'+(sentences[m]).substr(n+1));  
-   
- $("#target-letter").html((sentences[m][n]));
-totalhtml = $("body").html();
+$("#target-letter").html((sentences[m][n]));
 
-          var sent = "";       
+                 
               
 
           $(this).on('keypress',function(e) {
-              if(n === 0 && m === 0){
               
-                    startTime =  new Date();
-              }
+              if(n === 0 && m === 0)
+                startTime =  new Date();
+              
         key = e.which;
            
        $( ".well.well-lg.key" ).each(function( ) {
@@ -80,12 +66,12 @@ totalhtml = $("body").html();
                             }
                             else{
                         endTime = new Date();
-                        var elapseTime = endTime - startTime;
+                        let elapseTime = endTime - startTime;
                         space = space + 5;
                         elapseTime /= 1000;
-                       var mins = (elapseTime/60).toFixed(2);
-                        var results = (((space / mins) - (2 * numMistakes)).toFixed(2))
-                        var msg = "Your score for this round was: " + results + " (words/min)";
+                       let mins = (elapseTime/60).toFixed(2);
+                        let results = (((space / mins) - (2 * numMistakes)).toFixed(2))
+                        let msg = "Your score for this round was: " + results + " (words/min)";
                                 $( "#sentence" ).html(msg);
                                 feedback="";
                             $("#feedback").html(feedback);
@@ -105,7 +91,7 @@ totalhtml = $("body").html();
 });
  
      
-    
+    //'keydown' event here deals with toggling the lower-case keyboard and showing the upper-case keyboard when shift key is held
     $(this).on('keydown',function(e) {
        
        
@@ -115,72 +101,75 @@ totalhtml = $("body").html();
     }
        
 });
+    
+//the keyboard highlighting logic and execution is all done in the 'keyup' event as well as well as the upper-case toggling
     $(this).on('keyup',function(e) {
-  
-      if(192 == e.which) {
+   /*
+   'if' statement deals with toggling upper case keyboard when shift key is released (shift key functionality). All 'else if' statements deal with highlighting and unhighlighting special key charcaters except the space keyon the keyboard. The 'else' statement deals with highlighting and unhighlighting alpha-numeric keys and the space key on the keyboard.
+   */   
+  if(e.which === 16){
+             $("#keyboard-upper-container").hide();
+             $("#keyboard-lower-container").show();
+     }
+      else if(192 == e.which) {
             
               $("#126").css("background-color", "#f5f5f5");
              $("#96").css("background-color", "#f5f5f5");
              
          } 
-             if(189 === e.which) {
+     else if(189 === e.which) {
               $("#45").css("background-color", "#f5f5f5");
              $("#95").css("background-color", "#f5f5f5");
              
          } 
-         if(187 === e.which) {
+         else if(187 === e.which) {
               $("#43").css("background-color", "#f5f5f5");
              $("#61").css("background-color", "#f5f5f5");
              
          } 
-         if(220 === e.which) {
+         else if(220 === e.which) {
               $("#92").css("background-color", "#f5f5f5");
              $("#124").css("background-color", "#f5f5f5");
              
          } 
-             if(221 === e.which) {
+         else if(221 === e.which) {
               $("#93").css("background-color", "#f5f5f5");
              $("#125").css("background-color", "#f5f5f5");
              
          } 
-         if(219 === e.which) {
+       else if(219 === e.which) {
               $("#123").css("background-color", "#f5f5f5");
              $("#91").css("background-color", "#f5f5f5");
              
          }
-              if(222 === e.which) {
+         else if(222 === e.which) {
               $("#39").css("background-color", "#f5f5f5");
              $("#34").css("background-color", "#f5f5f5");
              
          }
-               if(186 === e.which) {
+       else if(186 === e.which) {
               $("#59").css("background-color", "#f5f5f5");
              $("#58").css("background-color", "#f5f5f5");
              
          } 
-         if(191 === e.which) {
+      else if(191 === e.which) {
               $("#47").css("background-color", "#f5f5f5");
              $("#63").css("background-color", "#f5f5f5");
              
          }
-              if(190 === e.which) {
+          else if(190 === e.which) {
               $("#46").css("background-color", "#f5f5f5");
              $("#62").css("background-color", "#f5f5f5");
              
          }
-              if(188 === e.which) {
+     else if(188 === e.which) {
               $("#44").css("background-color", "#f5f5f5");
              $("#60").css("background-color", "#f5f5f5");
              
          }
-     if(e.which === 16){
-             $("#keyboard-upper-container").hide();
-             $("#keyboard-lower-container").show();
-     }
     else{
        
-        var index1 = -1;
-        var index2 = -1;
+        let index1 = -1, index2 = -1;
        
         if(($("#"+e.which).css( "background-color" )) == "rgb(255, 255, 0)" ||($("#"+e.which).css( "background-color" )) == "rgb(245, 245, 245)"){
        $.each(($('#keyboard-upper-container').find("span")), function(x, valz) {
