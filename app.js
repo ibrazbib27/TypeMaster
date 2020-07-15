@@ -56,8 +56,8 @@ $(this).on('keypress',function(e) {
                             m++;
                         if(m === 5){
                             over = true;
-                            //m truns to 4 in order to not get any undefined errors for sentances array
-                            m = 4;
+                            //m truns to 0 in order to not get any undefined errors for sentances array
+                            m = 0;
                         }
                             
                         
