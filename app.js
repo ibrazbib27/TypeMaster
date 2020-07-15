@@ -23,7 +23,6 @@ $(this).on('keypress',function(e) {
         $("#"+i).css("background-color", "rgb(255, 255, 0)");
   }
 });
-
      if(over === false ){
         switch (sentences[m][n]){
             case $(`#${e.which}`).text():
@@ -49,12 +48,9 @@ $(this).on('keypress',function(e) {
                 numMistakes++;
                 break;      
         }
-              //moving the yellow block and changing target character
-        $("#target-letter").html(sentences[m][n]);
-        sent = (sentences[m]).substr(0,n)+'<mark>'+sentences[m][n]+'</mark>'+(sentences[m]).substr(n+1);
-        $("#sentence").html(sent);
-    }
-     if(n === sentences[m].length){
+     }
+    
+         if(n === sentences[m].length){
                             n = 0;
                             px = 0;
                             m++;
@@ -66,6 +62,7 @@ $(this).on('keypress',function(e) {
                             
                         
                         if(over === false){
+                            
                             feedback="";
                             $("#feedback").html(feedback);
                             $("#sentence").html(sentences[m]); 
@@ -90,6 +87,15 @@ $(this).on('keypress',function(e) {
                             }
   
                      }
+
+    
+              //moving the yellow block and changing target character
+    if(over === false ){
+        $("#target-letter").html(sentences[m][n]);
+        sent = (sentences[m]).substr(0,n)+'<mark>'+sentences[m][n]+'</mark>'+(sentences[m]).substr(n+1);
+        $("#sentence").html(sent);
+    }
+
        
 });
  
