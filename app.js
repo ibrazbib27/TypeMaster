@@ -108,7 +108,7 @@ $(this).on('keypress',function(e) {
 //the keyboard highlighting logic and execution is all done in the 'keyup' event as well as well as the upper-case toggling
     $(this).on('keyup',function(e) {
    /*
-   'if' statement deals with toggling upper case keyboard when shift key is released (shift key functionality). All 'else if' statements deal with highlighting and unhighlighting special key charcaters except the space keyon the keyboard. The 'else' statement deals with highlighting and unhighlighting alpha-numeric keys and the space key on the keyboard.
+   functionatily with keycodes of 32 and 16 (shift and space) are manually dealt with and defaults statement deals with unhighlighting alpha-numeric keys (upper case, special keys, alphabetic keys, and numeric keys).
    */   
 switch (e.which){
     case 16:
