@@ -68,7 +68,6 @@ $(this).on('keypress',function(e) {
                             $("#sentence").html(sentences[m]); 
                         }
                         else{
-                            n = n-1;
                             endTime = new Date();
                             let elapseTime = endTime - startTime;
                             space = space + 5;
